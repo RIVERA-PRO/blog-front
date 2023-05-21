@@ -1,0 +1,59 @@
+.userInfoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userInfo h3 {
+    color: var(--blanco);
+}
+
+.userInfo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+
+.userInfo p {
+    color: var(--blanco);
+    font-size: 14px;
+    font-weight: 500;
+}
+.loginText{
+    font-size: 14px;
+}
+
+.info h3 {
+    font-size: 17px;
+    font-weight: 500;  
+ }
+@media (max-width: 700px){
+
+    .userInfo img {
+        width: 60px;
+        height: 60px;
+    }
+    .userInfo p {
+        font-size: 13px;
+        font-weight: 400;
+    }
+    .info h3 {
+       font-size: 16px;
+       font-weight: 500;  
+    }
+}

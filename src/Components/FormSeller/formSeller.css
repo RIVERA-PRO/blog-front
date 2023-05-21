@@ -1,0 +1,80 @@
+.formSeller{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    padding: 3% 0px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.sellerFormulario{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 30%;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.formSeller input {
+    background-color: var(--header);
+    border-radius: 20px;
+    padding: 8px;
+    border: none;
+    margin: 10px 0px;
+    color: var(--text-color)!important;;
+
+}
+.formSeller button{
+
+    width: 100%;
+    padding: 10px 0px;
+    background-color: var(--botones) !important;
+    color: var(--blanco) !important;
+    border-radius: 20px;
+    border: none;
+    margin-top: 20px;
+}
+
+.formSeller label {
+    color: var(--text-color) !important;
+    ;
+}
+
+@media (max-width: 1024px){
+    .sellerFormulario{
+        width: 50%;
+    }
+    .formSeller{
+        padding: 16% 0px;
+    }
+
+     
+    
+}
+@media (max-width: 700px){
+    .sellerFormulario{
+        width: 90%;
+    }
+    .formSeller{
+        padding: 25% 0px;
+    }
+   
+}
+
+@media (max-width: 500px){
+    .sellerFormulario{
+        width: 80%;
+    }
+    .formSeller{
+        padding: 25% 0px;
+    }
+
+}

@@ -1,0 +1,27 @@
+.grid-container {
+  padding: 100px 0px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  place-content: center;
+  height: 100%;
+  width: 100%;
+    
+    background-color: var(--bgv-color);
+    gap: 30px;
+   
+    align-content: center;
+  }
+  
+  .all-users,
+  .form-publicacion,
+  .input-search {
+    height: 100%;
+  }
+  
+  @media (max-width: 1024px){
+    .grid-container {
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+      }
+  }

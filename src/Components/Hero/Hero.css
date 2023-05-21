@@ -1,0 +1,52 @@
+.contain-home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: var(--bg-color);
+    background-image: url(../../../public/img/hero2.png)!important;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 100px 0%;
+    width: 100%;
+    height: 50vh;
+    border-radius: 7px;
+}
+    
+
+.contain-hero{
+    background-color: var(--bgv-color);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    padding:4% 7%;
+}
+    
+  
+    
+    html::-webkit-scrollbar{
+        width: 7px;
+        height: 7px;
+        cursor: pointer;
+          background-color: var(--header);
+     }
+     
+    html::-webkit-scrollbar-thumb{
+        background: linear-gradient(0deg,var( --celeste) 0%, var( --modal) 50%)!important;
+         width: 10px;
+         border-radius:20px ;
+         cursor: pointer;
+     }
+    
+    
+    
+   
+ 
+    
+    
+    
+     

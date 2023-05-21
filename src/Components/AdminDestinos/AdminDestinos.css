@@ -1,0 +1,110 @@
+.list-destinos img{
+     width: 50px;
+     height: 50px;
+     object-fit: cover;
+     border-radius: 100%;
+    
+}
+
+.list-destinos span{
+    color: brown;
+   
+}
+
+.list-text{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.delete-destino{
+    background: transparent;
+    font-size: 16px;
+    color: brown;
+    cursor: pointer;
+}
+.edit-destino{
+    background: transparent;
+    font-size: 16px;
+    color: rgb(42, 48, 165);
+    cursor: pointer;
+}
+
+
+.list-destinos input{
+   border-radius: 30px;
+   border: 1px solid var(--botones);
+   padding: 4px 10px;
+   width: 100px;
+}
+
+
+.save{
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--bgv-color);
+}
+
+.list-destinos{
+    background-color: var(--bg-contain-text);
+    width: 90%;
+    height: 7rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px #1a1e25;
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.25s;
+    text-align: left;
+    display: flex;
+    margin-top: 10px;
+    padding: 0px 20px;
+    text-align: left;
+    color: var(--text-color);
+    font-size: 12px;
+}
+.list-destinos span{
+    width: 5rem;
+}
+.destinos-list{
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+align-content: center;
+justify-content: center;
+padding-top: 100px;
+background: linear-gradient(0deg,var(--gradient1) 0%, var(--gradient2) 100%);
+padding: 100px 0px;
+}
+
+.list-destinos{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 20px;
+    display: grid;
+    grid-auto-flow: column;
+    width: 60%;
+    overflow-x: auto;
+    
+}
+
+.list-destinos::-webkit-scrollbar{
+   width: 7px;
+   height: 7px;
+  
+   cursor: pointer;
+}
+
+.list-destinos::-webkit-scrollbar-thumb{
+    background-color: var(--botones);
+    width: 10px;
+    border-radius:20px ;
+    cursor: pointer;
+    -webkit-border-radius:20px ;
+    -moz-border-radius:20px ;
+    -ms-border-radius:20px ;
+    -o-border-radius:20px ;
+}

@@ -1,0 +1,81 @@
+.search-container {
+    position: relative;
+    min-height: 50px;
+  }
+  
+  .modal {
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    width: 100%;
+    background-color: var(--blanco);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    z-index: 9999;
+    max-height: 30vh;
+    overflow-y:scroll;
+    border-radius: 7px ;
+}
+  
+  .modal h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  
+  .modal a {
+    display: block;
+    margin-top: 5px;
+    text-decoration: none;
+    text-align: left;
+    font-size: 13px;
+    padding: 10px 0px;
+    color: var(--botones)!important;
+  }
+  
+  .inputJobs{
+    background-color: var( --botones)!important;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 10px;
+    width: 20rem;
+    color: var(--blanco)!important;
+  }
+ 
+  .modal::-webkit-scrollbar{
+    width: 7px;
+    height: 7px;
+    cursor: pointer;
+ }
+ 
+ .modal::-webkit-scrollbar-thumb{
+     background-color: var(--botones);
+     width: 10px;
+     border-radius:20px ;
+     cursor: pointer;
+ }
+
+ @media (max-width: 1024px){
+    .inputJobs{
+        background-color: var( --botones)!important;
+        border-radius: 20px;
+        border: none;
+        width: 20rem;
+        color: var(--blanco)!important;
+      }
+ }
+ @media (max-width: 800px){
+    .inputJobs{
+        width: 100%;
+        margin-top: 6px;
+      }
+     
+ }
+
+ @media (max-width: 400px){
+    .modal {
+        left: -35%;
+        width: 20rem;
+        padding: 10px;
+        max-height: 40vh;
+    }
+ }

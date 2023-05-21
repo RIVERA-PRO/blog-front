@@ -1,0 +1,103 @@
+.page-container {
+    display: flex;
+    background: linear-gradient(0deg,var(--gradient2) 0%, var(--gradient1) 100%);
+    transition: all .40s ease;
+    height: 100%;
+
+
+  }
+  
+  .menu-container {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50vh;
+
+  }
+  
+  .menu-container button {
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .content-container {
+    width: 50%;
+    flex: 1;
+    box-shadow:  0px 0px 10px var(--text-color)!important;
+    transition: 0.3s ease all;
+  }
+  
+  .btnss{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  .menu-button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-top: 30px;
+    color: var(--text-color);
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 1rem;
+  }
+
+  .menu-button:hover{
+    background-color: var(--botones);
+    border-radius: 30px;
+    color: black;
+}
+
+
+.icon{
+ color: var(--botones);
+ font-size: 18px;
+}
+
+.icon:hover{
+  color: var(--text-color);
+  border-radius: 30px;
+ 
+ 
+}
+
+
+@media (max-width: 1024px) {
+  .page-container  {
+    flex-direction: column;
+    width: 100%;
+  }
+  .menu-container {
+    width: 100%;
+  }
+  .content-container {
+    width: 100%;
+  }
+  .menu-container button {
+    margin-bottom: 0px;
+
+    text-align: left;
+  }
+  .btnss{
+    margin-top: -20rem;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 600px) {
+  .btnss{
+    margin-top: -23rem;
+    display: flex;
+    flex-direction: column;
+   
+  }
+}
