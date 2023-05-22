@@ -1,0 +1,52 @@
+.allUser-contain{
+    width: 15%;
+    height: 17rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    place-content: center;
+    position: fixed;
+    transition: 1s ease all;
+    color: var(--text-color);
+}
+.allUser-contain h5{
+    padding: 10px;
+}
+.user-list{
+    padding:10px 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.user-list img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+  
+}
+
+.user-list a{
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+.user-list p{
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 12px;
+}
+
+.user-list-text{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    
+}
+
+.allUser-contain a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 14px;
+}

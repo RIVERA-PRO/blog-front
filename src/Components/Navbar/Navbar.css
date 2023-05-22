@@ -465,11 +465,11 @@ nav{
 }
 .scrolled .logo{
     transition: 1s ease all;
-    display: none;
+    display: flex;
 }
 .scrolled .logo2{
     transition: 1s ease all;
-    display: flex;
+    display: none;
 }
 .scrolled .nav_toggle span{
    background-color: #fff!important;
@@ -533,7 +533,7 @@ nav{
     display: none;
 }
 
-@media (max-width: 400px){
+@media (max-width: 700px){
    
     .logonav{
         display: flex;

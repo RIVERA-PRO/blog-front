@@ -64,11 +64,11 @@ export default function Navbar() {
         <header>
             <nav className={scrolled ? "navbar scrolled" : "navbar"}>
                 <div className='logo'>
-                    <Anchor to={`/`} ><img src="../../../img/logo2.png" alt="logo" /></Anchor>
+                    <Anchor to={`/`} ><img src="../../../img/logo1.png" alt="logo" /></Anchor>
 
                 </div>
                 <div className='logo2'>
-                    <Anchor to={`/`} > <img src="../../../img/logo1.png" alt="logo" /></Anchor>
+                    <Anchor to={`/`} > <img src="../../../img/logo2.png" alt="logo" /></Anchor>
 
                 </div>
                 <div className='logonav'>

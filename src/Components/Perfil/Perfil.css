@@ -27,7 +27,7 @@
     border-radius: 300rem;
     margin-top: -8%;
     margin-left: 10%;
-    border: 2px solid var(--celeste);
+   
 }
 
 .banner{
@@ -211,7 +211,7 @@
 
 .perfil-publicacion{
    
-    width: 30rem;
+    width: 40rem;
     display: flex;
     flex-direction: column;
 
@@ -245,6 +245,11 @@
 }
 .title-cover_photo img{
     width: 100%;
+}
+
+.perfil-publicacion h4{
+    text-align: center;
+    padding-top: 20px;
 }
 @media (max-width: 700px){
     .perfil-container{
@@ -293,7 +298,7 @@
     }
     .banner{
         width: 100%;
-        height: 5rem;
+        height: 7rem;
         object-fit: cover;
     }
   

@@ -38,7 +38,7 @@ export default function Register() {
       [formInputs[3].name]: formInputs[3].value,
     }
 
-    let url = 'http://localhost:8080/users/signup'
+    let url = 'https://dev2-lv2s.onrender.com/users/signup'
     try {
       await axios.post(url, data)
       let dataAlert = {
@@ -95,7 +95,7 @@ export default function Register() {
         password: googleId,
       };
       console.log(data.name);
-      const url = "http://localhost:8080/users/signup";
+      const url = "https://dev2-lv2s.onrender.com/users/signup";
       await axios.post(url, data);
       let dataAlert = {
         icon: "success",

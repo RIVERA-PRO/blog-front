@@ -29,7 +29,7 @@ export default function Detail() {
     // let headers = { headers: { 'Authorization': `Bearer ${token}` } }
 
     // useEffect(() => {
-    //     fetch(`http://localhost:8080/destinos/${id}`, headers)
+    //     fetch(`https://dev2-lv2s.onrender.com/destinos/${id}`, headers)
     //         .then((response) => response.json())
     //         .then((data) => {
     //             setProducto(data.destino);

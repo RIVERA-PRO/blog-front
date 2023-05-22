@@ -4,10 +4,10 @@
   box-sizing: border-box;
  
 }
-:root{
+.theme-dark{
   --text-color: #000;
-  --bg-color: #f3f9fb;
-  --bgv-color: #ffffff;
+  --bg-color: #fff;
+  --bgv-color: #e4ebee;
   --darkIcon-color: #000;
   --header: #fff;
   --morado: #d103ffd3;
@@ -20,10 +20,10 @@
   --trasnparent:#0000002f;
   --hr: #0000000c;
 }
-.theme-dark{
+:root{
   --text-color: #ffff;
   --bg-color: #0f172a!important;
-  --bgv-color: #131e36!important;
+  --bgv-color: #142039!important;
   --darkIcon-color: #fff;
   --header: #0D3878;
   --morado: #d103ffd3;

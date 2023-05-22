@@ -9,7 +9,7 @@ export default function InputSearchs() {
     const [noResults, setNoResults] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:8080/publicacion")
+        fetch("https://dev2-lv2s.onrender.com/publicacion")
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.publicaciones);

@@ -45,7 +45,7 @@ export default function FormPublicacion() {
             "mail": mail,
         };
         console.log(data);
-        let url = 'http://localhost:8080/publicacion';
+        let url = 'https://dev2-lv2s.onrender.com/publicacion';
         let token = localStorage.getItem('token');
         let headers = { 'Authorization': `Bearer ${token}` };
         try {
@@ -111,7 +111,7 @@ export default function FormPublicacion() {
                     </div>
                 ) : (
                     <div className='userInfo-publicacion'>
-                        <p className='loginText'>Inicia sesión para poder publicar</p>
+                        <p className='sin-sesion'>Inicia sesión para poder publicar</p>
                         <div className='publicacion-icon'>
                             <div className='icon'>    <img src={articulo} alt="" /> <p>Articulo</p></div>
                             <div className='icon'>   <img src={foto} alt="" /> <p>Foto</p></div>

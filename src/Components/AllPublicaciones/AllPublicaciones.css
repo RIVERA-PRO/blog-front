@@ -50,7 +50,6 @@
     border-radius: 10px !important;
     cursor: pointer;
     border: none;
-    border: 1px solid var(--botones);
     color: var(--text-color)!important;
     text-decoration: none;
     text-align: center;
@@ -60,10 +59,6 @@
     justify-content: center;
     place-content: center;
     transition: 0.4s ease all;
-    -webkit-transition: 0.4s ease all;
-    -moz-transition: 0.4s ease all;
-    -ms-transition: 0.4s ease all;
-    -o-transition: 0.4s ease all;
 }
 .btn-cantidad-comments:hover{
     background-color: var(--trasnparent)!important;
@@ -165,6 +160,9 @@ position: fixed;
    justify-content: space-between;
    transition: 0.4s ease all;
 }
+.cometarios-cantidad a{
+    text-decoration: none;
+}
 .cometarios-cantidad hr{
     height: 36px;
     border: 1px solid #ffffff14!important;
@@ -228,10 +226,10 @@ position: fixed;
 .create-comment form{
     display: flex;
     width: 100%;
-    padding: 7px 10%;
+    padding: 7px 3%;
     height: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 10px;
     transition: 1s ease all;
 }
@@ -307,11 +305,10 @@ position: fixed;
     font-size: 12px;
 }
 .ver-descriptcion{
-    display: flex;
-  
     flex-direction: column;
-    text-align: left;
-    gap: 1rem;
+        text-align: left;
+        justify-content: center;
+        align-items: first baseline;
 }
 .ver-descriptcion h5{
    width: 100%;
@@ -355,7 +352,7 @@ position: fixed;
     .publicacion-contain{
         height: 100%;
         width: 100%;
-        padding: 10px 13%;
+        padding: 10px 0%;
     }
 
    
@@ -411,11 +408,11 @@ position: fixed;
         border-radius: 7px;
     }
     .title-cover_photo p{ 
-        font-size: 11px;
+        font-size: 12px;
     }
    
     .title-cover_photo h5{
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .ver-descriptcion{
@@ -424,7 +421,9 @@ position: fixed;
         justify-content: center;
         align-items: first baseline;
     }
-    
+    .ver-descriptcion button{
+        font-size: 11px;
+    }
 
     .name-photo h5{
         font-size: 9px;
@@ -432,25 +431,26 @@ position: fixed;
     .btn-cantidad-comments{
         width: 100%;
         border: none;
-        font-size: 10px;
-        padding: 0;
+        font-size: 11px;
+        padding: 8px 0;
         text-align: center;
     }
     .canti-com-p{
         width: 100%;
-        font-size: 10px;
-        padding: 0;
+        font-size: 11px;
+        padding: 8px 0;
         text-align: center;
     }
     .categoria-comento-p{
         width: 100%;
-        font-size: 10px;
-        padding: 0;
+        font-size: 11px;
+        padding: 8px 0;
         text-align: center;
     }
     .cometarios-cantidad{
         width: 100%;
         justify-content: center;
+        padding: 10px 0px;
     }
     .edit-delete-publicacion-btns{
         display: flex;

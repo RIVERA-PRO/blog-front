@@ -30,7 +30,7 @@ export default function AllPublicaciones({ reloadCount }) {
 
     const fetchPublicaciones = () => {
         setTimeout(() => {
-            fetch('http://localhost:8080/publicacion', headers)
+            fetch('https://dev2-lv2s.onrender.com/publicacion', headers)
                 .then(response => response.json())
                 .then(data => {
                     // Ordenar las publicaciones por fecha de creación (de la más reciente a la más antigua)
@@ -56,7 +56,7 @@ export default function AllPublicaciones({ reloadCount }) {
 
     const fetchComentarios = () => {
         setTimeout(() => {
-            fetch(`http://localhost:8080/comments`, headers)
+            fetch(`https://dev2-lv2s.onrender.com/comments`, headers)
                 .then(response => response.json())
                 .then(data => {
                     setComentarios(data.comments)
@@ -138,7 +138,7 @@ export default function AllPublicaciones({ reloadCount }) {
             text: comentarioText
         };
 
-        const url = `http://localhost:8080/comments?id=${params.id}`;
+        const url = `https://dev2-lv2s.onrender.com/comments?id=${params.id}`;
 
         fetch(url, {
             method: 'POST',
@@ -230,7 +230,7 @@ export default function AllPublicaciones({ reloadCount }) {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                const url = `http://localhost:8080/comments/${comentarioId}`;
+                const url = `https://dev2-lv2s.onrender.com/comments/${comentarioId}`;
 
                 fetch(url, {
                     method: 'DELETE',
@@ -337,7 +337,7 @@ export default function AllPublicaciones({ reloadCount }) {
         }
 
 
-        fetch(`http://localhost:8080/publicacion/${id}`, {
+        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -383,7 +383,7 @@ export default function AllPublicaciones({ reloadCount }) {
 
         let token = localStorage.getItem('token')
         let headers = { headers: { 'Authorization': `Bearer ${token}` } }
-        fetch(`http://localhost:8080/publicacion/${id}`, {
+        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
             method: 'DELETE',
             headers: headers.headers,
         })
@@ -479,7 +479,7 @@ export default function AllPublicaciones({ reloadCount }) {
                                         {showFullText ? (
                                             <h5>{publicacion?.description}</h5>
                                         ) : (
-                                            <h5>{publicacion?.description.slice(0, 60)}</h5>
+                                            <h5>{publicacion?.description.slice(0, 90)}</h5>
                                         )}
                                         {publicacion?.description.length > 100 && (
                                             <button className='verMas-Menos' onClick={handleToggleText}>
@@ -556,7 +556,7 @@ export default function AllPublicaciones({ reloadCount }) {
                                         </div>
                                         <div className='create-comment'>
                                             <form onSubmit={handleCrearComentario}>
-                                                <Anchor to={`/perfil/${publicacion?.user_id}/${publicacion?.name}`} > <img src={publicacion?.photo} alt="" /></Anchor>
+                                                <Anchor to={`/perfil/${publicacion?.user_id}/${publicacion?.name}`} > <img src={userData?.photo} alt="" /></Anchor>
                                                 <input type="text" required className='create-comment-input' placeholder='comentar...' value={comentarioText} onChange={handleComentarioTextChange} />
                                                 <button className='enviar' type="submit"><FontAwesomeIcon icon={faPaperPlane} /></button>
                                             </form>
@@ -569,7 +569,7 @@ export default function AllPublicaciones({ reloadCount }) {
                         ))
                     ) : (
                         <div className='AllPublicaciones'>
-                            <p>No hay publicaciones</p>
+                            <p className='sin-sesion'>No hay publicaciones</p>
                         </div>
                     )}
                 </div>

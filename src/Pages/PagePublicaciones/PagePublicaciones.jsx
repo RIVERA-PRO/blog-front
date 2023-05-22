@@ -15,7 +15,7 @@ export default function PagePublicaciones() {
                 <FormPublicacion />
             </div>
             <div className="input-search">
-                <MyPerfil />
+                <AllUsers />
             </div>
         </div>
     );

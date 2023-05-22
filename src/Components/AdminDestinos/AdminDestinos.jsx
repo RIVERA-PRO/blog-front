@@ -33,7 +33,7 @@ export default function AdminDestinos() {
     const idUser = useSelector((store) => store.getUser.user[0]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/publicacion", headers)
+        fetch("https://dev2-lv2s.onrender.com/publicacion", headers)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.destino)
@@ -45,7 +45,7 @@ export default function AdminDestinos() {
 
     const acceso = publicacion?.map((publicacion) => publicacion?._id)
     console.log(acceso)
-    const url = `http://localhost:8080/publicacion/${destinos_id}`
+    const url = `https://dev2-lv2s.onrender.com/publicacion/${destinos_id}`
     useEffect(() => {
         fetch(url, headers)
             .then((response) => response.json())
@@ -82,7 +82,7 @@ export default function AdminDestinos() {
 
 
     const handleSaveTitle = (id) => {
-        fetch(`http://localhost:8080/publicacion/${id}`, {
+        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ export default function AdminDestinos() {
     }
 
     const handleSaveTitle2 = (id) => {
-        fetch(`http://localhost:8080/publicacion/${id}`, {
+        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -167,7 +167,7 @@ export default function AdminDestinos() {
         console.log(id)
         let token = localStorage.getItem('token')
         let headers = { headers: { 'Authorization': `Bearer ${token}` } }
-        fetch(`http://localhost:8080/publicacion/${id}`, {
+        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
             method: 'DELETE',
             headers: headers.headers,
         })

@@ -1,6 +1,6 @@
 .MyPerfilContainer{
     width: 13%;
-    height: 40vh;
+    height: 14rem;
     background-color: var(--bg-color);
     border-radius: 10px;
     text-align: center;
@@ -49,6 +49,7 @@
 .sin-sesion{
     padding: 20px;
     font-size: 14px;
+    color: var(--text-color);
 }
 @media (max-width: 1024px){
     .MyPerfilContainer{

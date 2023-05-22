@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './Perfil.css';
 import Spiral from '../Spiral/Spiral';
 import banner from '../../img/banner.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faCheck, faPaperPlane, faTimes, faComment } from '@fortawesome/free-solid-svg-icons';
+import { Link as Anchor } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import alertActions from '../../Store/Alert/actions';
 import axios from 'axios';
@@ -33,7 +35,7 @@ export default function Perfil() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            fetch(`http://localhost:8080/users/${id}`, headers)
+            fetch(`https://dev2-lv2s.onrender.com/users/${id}`, headers)
                 .then(response => response.json())
                 .then(data => {
                     setUser(data);
@@ -80,7 +82,7 @@ export default function Perfil() {
 
     const fetchUserData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/users/${id}`, headers);
+            const response = await axios.get(`https://dev2-lv2s.onrender.com/users/${id}`, headers);
             const data = response.data;
             setUser(data);
             setSeguidores(data.user[0].seguidores);
@@ -93,7 +95,7 @@ export default function Perfil() {
         event.preventDefault();
 
         try {
-            const { data } = await axios.put(`http://localhost:8080/users/${id}`, {
+            const { data } = await axios.put(`https://dev2-lv2s.onrender.com/users/${id}`, {
                 name: textoEdit.name || user.user[0].name,
                 photo: textoEdit.photo || user.user[0].photo,
                 profile: textoEdit.profile || user.user[0].profile,
@@ -126,7 +128,7 @@ export default function Perfil() {
         event.preventDefault();
 
         try {
-            const { data } = await axios.put(`http://localhost:8080/users/${id}`, {
+            const { data } = await axios.put(`https://dev2-lv2s.onrender.com/users/${id}`, {
                 password: textoEdit.password || user.user[0].password,
             }, headers);
 
@@ -161,7 +163,7 @@ export default function Perfil() {
     useEffect(() => {
         const fetchPublicaciones = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/publicacion/`, headers);
+                const response = await axios.get(`https://dev2-lv2s.onrender.com/publicacion/`, headers);
 
                 setPublicaciones(response.data.publicaciones);
                 console.log(response.data.publicaciones)
@@ -222,7 +224,7 @@ export default function Perfil() {
             }
 
             await axios.put(
-                `http://localhost:8080/users/${id}`,
+                `https://dev2-lv2s.onrender.com/users/${id}`,
                 { seguidores: updatedSeguidores },
                 headers
             );
@@ -239,7 +241,7 @@ export default function Perfil() {
 
     const fetchComentarios = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/comments?chapter_id=${params.publicacion_id}`, headers);
+            const response = await axios.get(`https://dev2-lv2s.onrender.com/comments?chapter_id=${params.publicacion_id}`, headers);
 
             setComentarios(response.data.comments);
             console.log(response.data.comments[3].publicacion_id)
@@ -251,7 +253,165 @@ export default function Perfil() {
         fetchComentarios();
     }, []);
 
+    /*edit-public*/
+    const [reloadPublicacion, setReloadPublicacion] = useState(false);
 
+    const [publicacion, setPublicacion] = useState([]);
+    const [editingPublicacion, setEditingPublicacin] = useState(null);
+    const [newTitle, setNewTitle] = useState('');
+
+    const [newDescription, setNewDescription] = useState('');
+
+
+
+    const [newCover_photo, setNewCover_photo] = useState('');
+
+    const handleEditTitle = (event) => {
+        setNewTitle(event.target.value)
+    }
+
+    const handleEditCover_photo = (event) => {
+        setNewCover_photo(event.target.value);
+    };
+
+
+    const handleEditDescription = (event) => {
+        setNewDescription(event.target.value);
+    };
+
+
+
+
+
+
+    const handleSaveTitle = (id) => {
+
+        if (newTitle.trim() === '' || newDescription.trim() === '' || newCover_photo.trim() === '') {
+            let dataAlert = {
+                icon: "error",
+                title: "Los campos no pueden estar vacíos",
+                type: "toast"
+            };
+            dispatch(open(dataAlert));
+            return;
+        }
+
+
+        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                title: newTitle,
+                description: newDescription,
+                cover_photo: newCover_photo,
+            })
+        })
+            .then(response => response.json())
+            .then(result => {
+                // Actualizar el título del destino
+                setPublicacion(publicacion => publicacion?.map(publicacion => publicacion?._id === id ? result?.publicacion : publicacion))
+                setEditingPublicacin(null)
+                let dataAlert = {
+                    icon: "success",
+                    title: "Publicacion editada",
+                    type: "toast"
+                };
+                dispatch(open(dataAlert));
+                window.location.reload();
+            })
+            .catch(error => {
+                console.log(error)
+                let dataAlert = {
+                    icon: "error",
+                    title: error,
+                    type: "toast"
+                };
+                dispatch(open(dataAlert));
+            });
+    }
+
+
+
+
+
+
+    const handleDeletePublicacion = async (id,) => {
+        console.log(id)
+
+        let token = localStorage.getItem('token')
+        let headers = { headers: { 'Authorization': `Bearer ${token}` } }
+        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
+            method: 'DELETE',
+            headers: headers.headers,
+        })
+
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(response.status);
+                }
+                return response.json();
+            })
+            .then(result => {
+                // Eliminar el publicacion de la lista
+                setPublicacion(publicacion => publicacion.filter(publicacion => publicacion._id !== id))
+                let dataAlert = {
+                    icon: "success",
+                    title: "Publicacion eliminada",
+                    type: "toast"
+                };
+                dispatch(open(dataAlert));
+                window.location.reload();
+            })
+            .catch(error => {
+                console.log(error)
+                let dataAlert = {
+                    icon: "error",
+                    title: error,
+                    type: "toast"
+                };
+                dispatch(open(dataAlert));
+            })
+    }
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+
+        fetchComentarios();
+        updateUserData();
+    }, []);
+
+    const updateUserData = () => {
+        const user = localStorage.getItem('user');
+        if (user) {
+            setUserData(JSON.parse(user));
+        }
+    };
+    let [modal, setModal] = useState(false);
+    const [selectedPublicacion, setSelectedPublicacion] = useState(null);
+
+    // ...
+    const [selectedPublicacionId, setSelectedPublicacionId] = useState(null);
+    const handleModal = (publicacion) => {
+        if (comentarios && Array.isArray(comentarios)) {
+            const comentariosPublicacion = comentarios.filter(
+                (comentario) => comentario.publicacion_id === publicacion._id
+            );
+            setSelectedPublicacion(comentariosPublicacion);
+            setSelectedPublicacionId(publicacion._id);
+            console.log(setSelectedPublicacionId(publicacion._id))
+            console.log(setSelectedPublicacion(comentariosPublicacion))
+            setModal(!modal);
+        }
+    };
+    const [showFullText, setShowFullText] = useState(false);
+    const descriptionRef = useRef();
+    const handleToggleText = () => {
+        setShowFullText(!showFullText);
+        console.log(showFullText)
+    };
 
     return (
         <div>
@@ -342,7 +502,12 @@ export default function Perfil() {
                             </div>
                         ) : (
                             <div className="perfil-publicacion">
-
+                                {currentUser && currentUser.user_id === id && (
+                                    <h4>Tus publicaciones</h4>
+                                )}
+                                {!currentUser || currentUser.user_id !== id && (
+                                    <h4>Sus publicaciones</h4>
+                                )}
                                 {publicaciones
                                     .filter((publicacion) => publicacion.user_id === id)
                                     .map((publicacion) => (
@@ -355,25 +520,113 @@ export default function Perfil() {
                                                     <p>{new Date(publicacion.createdAt).toLocaleString()}</p>
                                                 </div>
                                             </div>
+                                            {publicacion.user_id === userData?.user_id && (
+                                                <div className="edit-btn" key={publicacion?._id}>
+                                                    <div className='edit-delete-publicacion-btns'>
+                                                        <div className="delete-btn" onClick={() => handleDeletePublicacion(publicacion?._id)}>
+                                                            <FontAwesomeIcon icon={faTrash} />
+                                                        </div>
+                                                        <div className="edit-btn" onClick={() => setEditingPublicacin(publicacion?._id)}>
+                                                            <FontAwesomeIcon icon={faEdit} />
+                                                        </div>
+                                                    </div>
+
+
+                                                    {editingPublicacion === publicacion?._id ? (
+                                                        <div className='form-edit-public'>
+                                                            <input type="text" required value={newTitle} placeholder="title" onChange={handleEditTitle} />
+                                                            <input type="text" required value={newCover_photo} placeholder="cover_photo url" onChange={handleEditCover_photo} />
+                                                            <input type="text" required value={newDescription} placeholder="description" onChange={handleEditDescription} />
+                                                            <div className='cancel-save'>
+                                                                <button className="save" onClick={() => handleSaveTitle(publicacion?._id)}>
+                                                                    <FontAwesomeIcon icon={faPaperPlane} />
+
+                                                                </button>
+                                                                <button className="cancel" onClick={() => setEditingPublicacin(null)}>
+                                                                    <FontAwesomeIcon icon={faTimes} />
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    ) : null}
+
+                                                </div>
+                                            )}
                                             <div className='title-cover_photo'>
                                                 <p>{publicacion.title}</p>
+                                                <div className='ver-descriptcion'>
+                                                    {showFullText ? (
+                                                        <h5>{publicacion?.description}</h5>
+                                                    ) : (
+                                                        <h5>{publicacion?.description.slice(0, 90)}</h5>
+                                                    )}
+                                                    {publicacion?.description.length > 100 && (
+                                                        <button className='verMas-Menos' onClick={handleToggleText}>
+                                                            {showFullText ? "Ver menos" : "Ver más"}
+                                                        </button>
+                                                    )}
+                                                </div>
                                                 <img src={publicacion.cover_photo} alt="" />
                                             </div>
 
+                                            <div className='cometarios-cantidad'>
+                                                <p className='categoria-comento-p'>{publicacion?.categoria.slice(0, 15)}</p>
+                                                <hr />
+
+                                                <button className='btn-cantidad-comments' onClick={() => handleModal(publicacion)}>   <FontAwesomeIcon icon={faComment} />  Comentar </button>
+
+                                                <hr />
+
+                                                <p className='canti-com-p'>  {comentarios.filter((comentario) => comentario.publicacion_id === publicacion._id).length} comentarios</p>
+
+
+
+                                            </div>
+
+                                            {modal && selectedPublicacion && (
+                                                <div className='modal-sub-comments'>
+                                                    <div className="submodal-comments">
+                                                        <div className='title-cerrar'>
+                                                            <div><p>Comentarios</p></div>
+                                                            <div className="cerrar" onClick={() => setModal(!modal)}>x</div>
+                                                        </div>
+                                                        {selectedPublicacion.map(comentario => (
+                                                            <div className='comentarios' key={comentario._id}>
+
+                                                                <div className='comentarios' key={comentario._id}>
+
+                                                                    <Anchor to={`/perfil/${comentario.user_id._id}/${comentario?.user_id?.name}`} > <img src={comentario?.user_id?.photo} alt="" /></Anchor>
+                                                                    <div className='name-text'>
+                                                                        <Anchor to={`/perfil/${comentario.user_id._id}/${comentario?.user_id?.name}`} >{comentario?.user_id?.name}</Anchor>
+                                                                        <h6>{new Date(comentario?.createdAt).toLocaleString()}</h6>
+                                                                        <div className='comentario'>
+                                                                            <p>{comentario?.text}</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                        ))}
+                                                    </div>
+
+
+
+
+
+
+                                                </div>
+                                            )}
                                             <div>
-                                                {comentarios
+                                                {/* {comentarios
                                                     .filter((comentario) => comentario.publicacion_id === publicacion._id)
                                                     .map((comentario) => (
                                                         <div key={comentario._id}>
                                                             <p>{comentario.text}</p>
-                                                            <img src={comentario.user_id.photo} alt={comentario.user_id.name} />
-                                                            <p>{comentario.user_id.name}</p>
-                                                            <p>{comentario.user_id.publicacion_id}</p>
                                                         </div>
-                                                    ))}
-
+                                                    ))} */}
 
                                             </div>
+
                                         </div>
                                     ))}
 
