@@ -5,6 +5,7 @@ import DestinosFormPage from "./DestinosFormPage/DestinosFormPage";
 import PublicarJobsPage from "./PublicarJobsPage/PublicarJobsPage";
 import PagePerfil from "./PagePerfil/PagePerfil";
 import AllPublicaciones from "./PagePublicaciones/PagePublicaciones";
+import PageTrabajos from "./PageTrabajos/PageTrabajos";
 import { createBrowserRouter } from "react-router-dom";
 export const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
             {
                 path: "/publicaciones/:id",
                 element: <AllPublicaciones />,
+            },
+            {
+                path: "/trabajos",
+                element: <PageTrabajos />,
             },
 
 

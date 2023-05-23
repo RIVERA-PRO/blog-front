@@ -1,12 +1,12 @@
 .allUser-contain{
-    width: 15%;
+    width: 15rem;
     height: 17rem;
     background-color: var(--bg-color);
     border-radius: 10px;
     text-align: center;
     display: flex;
     place-content: center;
-    position: fixed;
+   
     transition: 1s ease all;
     color: var(--text-color);
 }
@@ -49,4 +49,12 @@
     text-decoration: none;
     color: var(--text-color);
     font-size: 14px;
+}
+
+.users-trabajos{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    
 }

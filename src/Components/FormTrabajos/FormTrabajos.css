@@ -1,0 +1,57 @@
+.PublicacionFormulario{
+    max-height: 100vh;
+    overflow-y:scroll;
+    padding: 10px 10px;
+  
+}
+.contain-trabajos{
+    display: flex;
+    padding: 0px 13%;
+}
+
+.contain-inputs label{
+    color: var(--text-color);
+    padding: 10px 0px;
+    font-size: 14px;
+}
+.inputs-flex {
+    display: flex;
+    gap: 2rem;
+    text-align: left;
+}
+
+
+.contain-inputs select{
+    width: 9rem;
+    background-color: var( --inputs)!important;
+    border-radius: 20px;
+    border: none;
+    padding: 8px 10px;
+    color: var(--bg-color)!important;
+}
+
+
+@media (max-width: 500px){
+    .contain-inputs{
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .al-lado{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .inputs-flex {
+        flex-direction: column;
+    }
+    .inputs-flex-select{
+       flex-direction: column;
+    }
+    .contain-inputs select{
+        width: 100%;
+    }
+    
+
+}

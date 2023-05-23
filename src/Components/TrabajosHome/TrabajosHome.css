@@ -1,0 +1,85 @@
+.trabajos-home {
+    width: 15rem;
+    height: 18rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    place-content: center;
+    transition: 1s ease all;
+    color: var(--text-color);
+    overflow: scroll;
+}
+.trabajos-card{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 10px 20px;
+    text-align: left;
+    gap: 10px;
+    
+}
+
+.trabajos-home::-webkit-scrollbar{
+    width: 7px;
+    height: 7px;
+    cursor: pointer;
+ }
+ 
+ .trabajos-home::-webkit-scrollbar-thumb{
+     background-color: var(--botones);
+     width: 10px;
+     border-radius:20px ;
+     cursor: pointer;
+ }
+
+ .trabajos-card a {
+    display: flex;
+ }
+
+ .modalidad-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+   
+ }
+ .btn-details-home{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: var(--botones);
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 2px 20px;
+    border-radius: 30rem;
+}
+
+.trabajos-home h5{
+  display: flex;
+
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+ 
+  padding: 10px 0px;
+  border-radius: 10px 10px 0px 0px ;
+  width: 100%;
+}
+.trabajos-card h6{
+    font-size: 13px;
+}
+
+.ver-mas-pagina{
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 14px;
+    padding-top: 200px;
+}
+
+.trabajos-card hr{
+    background-color: var(--hr);
+    border: 1px solid #ffffff0d;
+}

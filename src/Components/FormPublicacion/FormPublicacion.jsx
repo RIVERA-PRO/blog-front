@@ -5,19 +5,21 @@ import alertActions from "../../Store/Alert/actions";
 import { useParams } from 'react-router-dom';
 import './FormPublicacion.css';
 import { Link as Anchor } from "react-router-dom";
-import { faTrash, faEdit, faCheck, faPaperPlane, faTimes, faComment } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+
 import articulo from '../../img/articulo.png'
 import video from '../../img/video.png'
 import foto from '../../img/foto.png'
 import portafolio from '../../img/portafolio.jpg'
 import Spiral from '../Spiral/Spiral';
 import AllPublicaciones from '../AllPublicaciones/AllPublicaciones';
+import FormTrabajos from '../../Components/FormTrabajos/FormTrabajos'
 const { open } = alertActions;
 
 export default function FormPublicacion() {
     const [reloadCount, setReloadCount] = useState(0);
-
+    let [editMode, setEditMode] = useState('info');
     const dispatch = useDispatch();
     const title = useRef();
     const cover_photo = useRef();
@@ -45,7 +47,7 @@ export default function FormPublicacion() {
             "mail": mail,
         };
         console.log(data);
-        let url = 'https://dev2-lv2s.onrender.com/publicacion';
+        let url = 'http://localhost:8080/publicacion';
         let token = localStorage.getItem('token');
         let headers = { 'Authorization': `Bearer ${token}` };
         try {
@@ -125,34 +127,52 @@ export default function FormPublicacion() {
             </div>
             {modal &&
                 <div className='form-modal-content'>
-                    <form onSubmit={handleSubmit} className='PublicacionFormulario'>
-                        <div className='title-cerrar'>
 
-                            <div className="cerrar" onClick={() => setModal(!modal)}>x</div>
+                    {editMode === 'info' ? (
+                        <form onSubmit={handleSubmit} className='PublicacionFormulario'>
+
+                            <div className='btnYcerrar'>
+                                <div className='trabajo-publicacion-btn' onClick={() => setEditMode('password')}><p>Ir a crear trabajo <FontAwesomeIcon icon={faSignOutAlt} /></p></div>
+
+                                <div className="cerrar" onClick={() => setModal(!modal)}>x</div>
+                            </div>
+                            <div className='contain-inputs'>
+                                <p>Crear una publicación</p>
+                                <div className='inputs'>
+                                    <label >titulo</label>
+                                    <input type="text" placeholder='titulo' required ref={title} />
+                                </div>
+                                <div className='inputs'>
+                                    <label >Texto</label>
+                                    <textarea type="text" placeholder='texto' required ref={description} />
+                                </div>
+                                <div className='inputs'>
+                                    <label >Foto</label>
+                                    <input type="url" placeholder='foto link' ref={cover_photo} />
+                                </div>
+                                <div className='inputs'>
+                                    <label>categoria</label>
+                                    <input type="text" placeholder='categoria ' required ref={categoria} />
+                                </div>
+
+                                <button>Crear</button>
+                            </div>
+
+
+                        </form>
+                    ) : (
+                        <div className='PublicacionFormulario'>
+                            <div className='btnYcerrar'>
+                                <div className='trabajo-publicacion-btn' onClick={() => setEditMode('info')}><p>Ir a crear publicacion <FontAwesomeIcon icon={faSignOutAlt} /></p></div>
+
+                                <div className="cerrar" onClick={() => setModal(!modal)}>x</div>
+                            </div>
+                            <div>
+                                <FormTrabajos />
+                            </div>
                         </div>
-                        <div className='contain-inputs'>
 
-                            <div className='inputs'>
-                                <label >titulo</label>
-                                <input type="text" placeholder='titulo' ref={title} />
-                            </div>
-                            <div className='inputs'>
-                                <label >Texto</label>
-                                <textarea type="text" placeholder='texto' ref={description} />
-                            </div>
-                            <div className='inputs'>
-                                <label >Foto</label>
-                                <input type="text" placeholder='foto url' ref={cover_photo} />
-                            </div>
-                            <div className='inputs'>
-                                <label>categoria</label>
-                                <input type="text" placeholder='categoria ' ref={categoria} />
-                            </div>
-
-
-                        </div>
-                        <button>Crear</button>
-                    </form>
+                    )}
                 </div>
             }
 
@@ -160,3 +180,5 @@ export default function FormPublicacion() {
         </div>
     );
 }
+
+

@@ -32,7 +32,7 @@ export default function SignIn() {
     };
     console.log(data);
 
-    let url = 'https://dev2-lv2s.onrender.com/users/signin';
+    let url = 'http://localhost:8080/users/signin';
     try {
       let res = await axios.post(url, data);
       localStorage.setItem('token', res.data.token);
@@ -95,7 +95,7 @@ export default function SignIn() {
   }, []);
 
   const onSuccess = async (response) => {
-    let url = "https://dev2-lv2s.onrender.com/users/signin";
+    let url = "http://localhost:8080/users/signin";
     let token = localStorage.getItem("token");
     let headers = { headers: { Authorization: `Bearer ${token} }` } };
 

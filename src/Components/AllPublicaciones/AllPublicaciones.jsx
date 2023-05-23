@@ -30,7 +30,7 @@ export default function AllPublicaciones({ reloadCount }) {
 
     const fetchPublicaciones = () => {
         setTimeout(() => {
-            fetch('https://dev2-lv2s.onrender.com/publicacion', headers)
+            fetch('http://localhost:8080/publicacion', headers)
                 .then(response => response.json())
                 .then(data => {
                     // Ordenar las publicaciones por fecha de creación (de la más reciente a la más antigua)
@@ -56,7 +56,7 @@ export default function AllPublicaciones({ reloadCount }) {
 
     const fetchComentarios = () => {
         setTimeout(() => {
-            fetch(`https://dev2-lv2s.onrender.com/comments`, headers)
+            fetch(`http://localhost:8080/comments`, headers)
                 .then(response => response.json())
                 .then(data => {
                     setComentarios(data.comments)
@@ -138,7 +138,7 @@ export default function AllPublicaciones({ reloadCount }) {
             text: comentarioText
         };
 
-        const url = `https://dev2-lv2s.onrender.com/comments?id=${params.id}`;
+        const url = `http://localhost:8080/comments?id=${params.id}`;
 
         fetch(url, {
             method: 'POST',
@@ -230,7 +230,7 @@ export default function AllPublicaciones({ reloadCount }) {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                const url = `https://dev2-lv2s.onrender.com/comments/${comentarioId}`;
+                const url = `http://localhost:8080/comments/${comentarioId}`;
 
                 fetch(url, {
                     method: 'DELETE',
@@ -337,7 +337,7 @@ export default function AllPublicaciones({ reloadCount }) {
         }
 
 
-        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
+        fetch(`http://localhost:8080/publicacion/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -383,7 +383,7 @@ export default function AllPublicaciones({ reloadCount }) {
 
         let token = localStorage.getItem('token')
         let headers = { headers: { 'Authorization': `Bearer ${token}` } }
-        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
+        fetch(`http://localhost:8080/publicacion/${id}`, {
             method: 'DELETE',
             headers: headers.headers,
         })
@@ -451,9 +451,9 @@ export default function AllPublicaciones({ reloadCount }) {
 
                                         {editingPublicacion === publicacion?._id ? (
                                             <div className='form-edit-public'>
-                                                <input type="text" required value={newTitle} placeholder="title" onChange={handleEditTitle} />
-                                                <input type="text" required value={newCover_photo} placeholder="cover_photo url" onChange={handleEditCover_photo} />
-                                                <input type="text" required value={newDescription} placeholder="description" onChange={handleEditDescription} />
+                                                <input type="text" required value={newTitle} placeholder="Titulo" onChange={handleEditTitle} />
+                                                <input type="text" required value={newCover_photo} placeholder="Foto Link" onChange={handleEditCover_photo} />
+                                                <input type="text" required value={newDescription} placeholder="Descripcion" onChange={handleEditDescription} />
                                                 <div className='cancel-save'>
                                                     <button className="save" onClick={() => handleSaveTitle(publicacion?._id)}>
                                                         <FontAwesomeIcon icon={faPaperPlane} />
@@ -487,7 +487,9 @@ export default function AllPublicaciones({ reloadCount }) {
                                             </button>
                                         )}
                                     </div>
-                                    <img src={publicacion?.cover_photo} alt="" />
+                                    {publicacion?.cover_photo && (
+                                        <img src={publicacion?.cover_photo} alt="" />
+                                    )}
                                 </div>
 
                                 <div className='hr'><hr /></div>

@@ -109,12 +109,14 @@ export default function Navbar() {
                                         <div className='enlaces'>
                                             <Anchor to={`/`} >Inico</Anchor>
                                             <Anchor to={`/publicaciones/ASJDH812789SA7DASUEHD81273`} >Publicaciones</Anchor>
+                                            <Anchor to={`/trabajos`} >Trabajos</Anchor>
                                             <Anchor to={`/new/destinos`} >Admin</Anchor>
                                         </div>
                                     ) : (
                                         <div className='enlaces'>
                                             <Anchor to={`/`} >Inico</Anchor>
                                             <Anchor to={`/publicaciones/ASJDH812789SA7DASUEHD81273`} >Publicaciones</Anchor>
+                                            <Anchor to={`/trabajos`} >Trabajos</Anchor>
                                         </div>
                                     )) : (
                                     <div className='enlaces'>

@@ -54,6 +54,19 @@
      cursor: pointer;
  }
 
+ .photo-name-input-perfil {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+ }
+ .photo-name-input-perfil img{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+
+}
+ 
+
  @media (max-width: 1024px){
     .inputJobs{
         background-color: var( --botones)!important;

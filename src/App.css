@@ -19,6 +19,7 @@
   --scroll:#0D3878!important;
   --trasnparent:#0000002f;
   --hr: #0000000c;
+  --inputs: #0D3878;
 }
 :root{
   --text-color: #ffff;
@@ -35,6 +36,7 @@
   --scroll:#0f172a!important;
   --trasnparent:#ffffff2e;
   --hr: #0000;
+  --inputs: #fff;
 }
 .theme-dark .logo2{
   display: flex;

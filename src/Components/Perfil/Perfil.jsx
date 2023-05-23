@@ -35,7 +35,7 @@ export default function Perfil() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            fetch(`https://dev2-lv2s.onrender.com/users/${id}`, headers)
+            fetch(`http://localhost:8080/users/${id}`, headers)
                 .then(response => response.json())
                 .then(data => {
                     setUser(data);
@@ -82,7 +82,7 @@ export default function Perfil() {
 
     const fetchUserData = async () => {
         try {
-            const response = await axios.get(`https://dev2-lv2s.onrender.com/users/${id}`, headers);
+            const response = await axios.get(`http://localhost:8080/users/${id}`, headers);
             const data = response.data;
             setUser(data);
             setSeguidores(data.user[0].seguidores);
@@ -95,7 +95,7 @@ export default function Perfil() {
         event.preventDefault();
 
         try {
-            const { data } = await axios.put(`https://dev2-lv2s.onrender.com/users/${id}`, {
+            const { data } = await axios.put(`http://localhost:8080/users/${id}`, {
                 name: textoEdit.name || user.user[0].name,
                 photo: textoEdit.photo || user.user[0].photo,
                 profile: textoEdit.profile || user.user[0].profile,
@@ -128,7 +128,7 @@ export default function Perfil() {
         event.preventDefault();
 
         try {
-            const { data } = await axios.put(`https://dev2-lv2s.onrender.com/users/${id}`, {
+            const { data } = await axios.put(`http://localhost:8080/users/${id}`, {
                 password: textoEdit.password || user.user[0].password,
             }, headers);
 
@@ -163,7 +163,7 @@ export default function Perfil() {
     useEffect(() => {
         const fetchPublicaciones = async () => {
             try {
-                const response = await axios.get(`https://dev2-lv2s.onrender.com/publicacion/`, headers);
+                const response = await axios.get(`http://localhost:8080/publicacion/`, headers);
 
                 setPublicaciones(response.data.publicaciones);
                 console.log(response.data.publicaciones)
@@ -224,7 +224,7 @@ export default function Perfil() {
             }
 
             await axios.put(
-                `https://dev2-lv2s.onrender.com/users/${id}`,
+                `http://localhost:8080/users/${id}`,
                 { seguidores: updatedSeguidores },
                 headers
             );
@@ -241,7 +241,7 @@ export default function Perfil() {
 
     const fetchComentarios = async () => {
         try {
-            const response = await axios.get(`https://dev2-lv2s.onrender.com/comments?chapter_id=${params.publicacion_id}`, headers);
+            const response = await axios.get(`http://localhost:8080/comments?chapter_id=${params.publicacion_id}`, headers);
 
             setComentarios(response.data.comments);
             console.log(response.data.comments[3].publicacion_id)
@@ -297,7 +297,7 @@ export default function Perfil() {
         }
 
 
-        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
+        fetch(`http://localhost:8080/publicacion/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -343,7 +343,7 @@ export default function Perfil() {
 
         let token = localStorage.getItem('token')
         let headers = { headers: { 'Authorization': `Bearer ${token}` } }
-        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
+        fetch(`http://localhost:8080/publicacion/${id}`, {
             method: 'DELETE',
             headers: headers.headers,
         })

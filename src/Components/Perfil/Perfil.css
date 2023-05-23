@@ -154,6 +154,7 @@
 }
 .formEdit label{
     margin-top: 10px;
+    font-size: 14px;
 }
 .formEdit button{
     width: 100%;
@@ -182,13 +183,13 @@
 }
 .input-edit{
     background-color: transparent;
-    padding: 5px;
+    padding: 7px;
     border: none;
     margin: 4px 0px;
     background-color: #000000;
     border-radius: 30px;
     height: 33px;
-    background-color: #ffff;
+    background-color: var(--inputs) !important;
     color: var(--bg-color);
     border-radius: 300rem !important;
 }
