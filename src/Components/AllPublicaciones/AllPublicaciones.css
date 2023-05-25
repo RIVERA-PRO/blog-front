@@ -322,6 +322,13 @@ position: fixed;
     gap: 8px;
     margin-top: 50px;
 }
+.form-edit-public select {
+    border-radius: 30rem;
+    padding: 10px 10px;
+    background-color: transparent;
+    background-color: var(--inputs);
+    border: none;
+}
 .form-edit-public input{
     border-radius: 30rem;
     padding: 10px 10px;
@@ -364,6 +371,29 @@ position: fixed;
     gap: 10px;
     margin-top: -3rem;
    
+}
+
+.comentar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 0px 5%;
+}
+.comentar img{
+    width: 35px ;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+.comentar input{
+    border-radius: 30rem;
+   padding: 7px 30px;
+   width: 100%;
+   background-color: transparent;
+   border: 1px solid var(--inputPublicacin);
+   color: var(--text-color);
 }
 @media (max-width: 980px){
     .publicacion-contain{

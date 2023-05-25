@@ -38,8 +38,9 @@
     border: none;
     padding: 10px 10px;
     width: 20rem;
-    color: var(--blanco)!important;
+    color: var(--text-color)!important;
   }
+
  
   .modal::-webkit-scrollbar{
     width: 7px;
@@ -65,7 +66,9 @@
   border-radius: 100%;
 
 }
- 
+ .results-no-found-2 {
+  color: #000;
+ }
 
  @media (max-width: 1024px){
     .inputJobs{

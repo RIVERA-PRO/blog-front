@@ -3,7 +3,7 @@ import './Navbar.css'
 
 import { Link as Anchor, useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faHeart, faShoppingCart, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faHome, faShoppingCart, faSignOutAlt, faNewspaper, faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import LogIn from '../LogIn/LogIn';
 import Register from '../Register/Register';
 import UserInfo from '../InfoUser/InfoUser';
@@ -88,50 +88,55 @@ export default function Navbar() {
                     </div>
 
 
-                    <div>
 
-                        {userData ? (
-                            <div className='userInfo-nav2' onClick={handleModalUser} >
-                                <img src={userData.photo} alt="User Avatar" />
-                                <p><FontAwesomeIcon icon={faSignOutAlt} /> </p>
 
-                            </div>
-                        ) : (
-                            <div className='userInfo-nav2-ini' onClick={handleModalUser} >
+                    {userData ? (
+                        <div className='userInfo-nav2' onClick={handleModalUser} >
+                            <img src={userData.photo} alt="User Avatar" />
+                            <p><FontAwesomeIcon icon={faSignOutAlt} /> </p>
 
-                                <p>Ingresar <FontAwesomeIcon icon={faSignOutAlt} /></p>
-                            </div>
-                        )}
-                        <div className='input-enlaces'>
-                            <div>
-                                {userData ? (
-                                    idUser?.is_admin ? (
-                                        <div className='enlaces'>
-                                            <Anchor to={`/`} >Inico</Anchor>
-                                            <Anchor to={`/publicaciones/ASJDH812789SA7DASUEHD81273`} >Publicaciones</Anchor>
-                                            <Anchor to={`/trabajos`} >Trabajos</Anchor>
-                                            <Anchor to={`/new/destinos`} >Admin</Anchor>
-                                        </div>
-                                    ) : (
-                                        <div className='enlaces'>
-                                            <Anchor to={`/`} >Inico</Anchor>
-                                            <Anchor to={`/publicaciones/ASJDH812789SA7DASUEHD81273`} >Publicaciones</Anchor>
-                                            <Anchor to={`/trabajos`} >Trabajos</Anchor>
-                                        </div>
-                                    )) : (
+                        </div>
+                    ) : (
+                        <div className='userInfo-nav2-ini' onClick={handleModalUser} >
+
+                            <p>Ingresar <FontAwesomeIcon icon={faSignOutAlt} /></p>
+                        </div>
+                    )}
+                    <div className='input-enlaces'>
+                        <div>
+                            {userData ? (
+                                idUser?.is_admin ? (
                                     <div className='enlaces'>
-                                        <Anchor to={`/`} >Home</Anchor>
+                                        <Anchor to={`/`} > <FontAwesomeIcon className='icon-enlaces' icon={faHome} /> <span>Inico</span></Anchor>
+                                        <Anchor to={`/publicaciones/ASJDH812789SA7DASUEHD81273`} > <FontAwesomeIcon className='icon-enlaces' icon={faNewspaper} /> Publicaciones</Anchor>
+                                        <Anchor to={`/trabajos`} > <FontAwesomeIcon className='icon-enlaces' icon={faBriefcase} /> <span>Trabajos</span></Anchor>
+                                        <Anchor to={`/admin`} ><FontAwesomeIcon className='icon-enlaces' icon={faUser} />  <span>Admin</span></Anchor>
                                     </div>
-                                )}
-                            </div>
-
-                            <div className='inputSearch-nav'>
-                                <InputSearchs />
-                            </div>
+                                ) : (
+                                    <div className='enlaces'>
+                                        <Anchor to={`/`} > <FontAwesomeIcon className='icon-enlaces' icon={faHome} />Inico</Anchor>
+                                        <Anchor to={`/publicaciones/ASJDH812789SA7DASUEHD81273`} > <FontAwesomeIcon className='icon-enlaces' icon={faNewspaper} /> <span>Publicaciones</span></Anchor>
+                                        <Anchor to={`/trabajos`} > <FontAwesomeIcon className='icon-enlaces' icon={faBriefcase} /> <span>Trabajos</span></Anchor>
+                                    </div>
+                                )) : (
+                                <div className='enlaces'>
+                                    <Anchor to={`/`} > <FontAwesomeIcon className='icon-enlaces' icon={faHome} />Inico</Anchor>
+                                    <Anchor to={`/publicaciones/ASJDH812789SA7DASUEHD81273`} > <FontAwesomeIcon className='icon-enlaces' icon={faNewspaper} /> <span>Publicaciones</span></Anchor>
+                                    <Anchor to={`/trabajos`} > <FontAwesomeIcon className='icon-enlaces' icon={faBriefcase} /> <span>Trabajos</span></Anchor>
+                                </div>
+                            )}
                         </div>
 
-
+                        <div className='inputSearch-nav'>
+                            <InputSearchs />
+                        </div>
                     </div>
+
+
+
+
+
+
 
                 </div>
                 <div className='inputSearch-nav2'>
@@ -174,6 +179,19 @@ export default function Navbar() {
                     </div>
                 )}
             </nav>
+
+
+            <div className='enlaces-movil'>
+                <Anchor to={`/`} > <  FontAwesomeIcon className='icon-movil' icon={faHome} /><span>Inico</span></Anchor>
+                <Anchor to={`/publicaciones/ASJDH812789SA7DASUEHD81273`} > <FontAwesomeIcon className='icon-movil' icon={faNewspaper} /> <span>Publicaciones</span></Anchor>
+                <Anchor to={`/trabajos`} > <FontAwesomeIcon className='icon-movil' icon={faBriefcase} /> <span>Trabajos</span></Anchor>
+
+                {userData ? (
+                    <Anchor to={`/perfil/${userData?.user_id}/${userData?.name}`} > <FontAwesomeIcon className='icon-movil' icon={faUser} /> <span>Perfil</span></Anchor>
+                ) : (
+                    <Anchor onClick={handleModalUser} > <FontAwesomeIcon className='icon-movil' icon={faUser} /> <span>Ingresar</span></Anchor>
+                )}
+            </div>
 
 
         </header>

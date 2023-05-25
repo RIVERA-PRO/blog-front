@@ -134,7 +134,7 @@ export default function FormTrabajos() {
 
         }
         console.log(data)
-        let url = 'http://localhost:8080/trabajos'
+        let url = 'https://dev2-lv2s.onrender.com/trabajos'
         let token = localStorage.getItem('token')
         let headers = { 'Authorization': `Bearer ${token}` }
         try {
@@ -169,16 +169,13 @@ export default function FormTrabajos() {
                 <div className='contain-inputs'>
                     <p>Crear un trabajo</p>
 
-                    <div className='inputs-flex'>
-                        <div>
-                            <label >Titulo</label>
-                            <input type="text" placeholder='titulo' required ref={title} />
-                        </div>
-                        <div>
-                            <label>Categoria</label>
-                            <input type="text" placeholder='categoria' required ref={categoria} />
-                        </div>
+
+                    <div>
+                        <label >Titulo</label>
+                        <input type="text" placeholder='titulo' required ref={title} />
                     </div>
+
+
 
                     <div className='inputs'>
                         <label >Description</label>
@@ -202,7 +199,7 @@ export default function FormTrabajos() {
                         <div className='inputs-flex-select'>
                             <label htmlFor="country">Departamento</label>
                             <select id="country" value={selectedDepartment} onChange={handleSelect} required ref={countryRef}>
-                                <option value="">Departamento</option>
+                                <option value="">Seleccione un Departamento</option>
                                 {SaltaDepartments.map((department) => (
                                     <option key={department} value={department}>
                                         {department}
@@ -213,7 +210,7 @@ export default function FormTrabajos() {
                         <div className='inputs-flex-select'>
                             <label htmlFor="jornada">Jornada</label>
                             <select id="jornada" value={selectJornada} onChange={handleJornada} required ref={jornadaRef}>
-                                <option value="">Jornada</option>
+                                <option value=""> Seleccione una Jornada</option>
                                 {jornadas.map((jornad) => (
                                     <option key={jornad} value={jornad}>
                                         {jornad}
@@ -221,16 +218,48 @@ export default function FormTrabajos() {
                                 ))}
                             </select>
                         </div>
+                    </div>
+                    <div className='inputs-flex'>
                         <div className='inputs-flex-select'>
                             <label htmlFor="modalidad">Modalidad</label>
                             <select id="modalidad" value={selectModalidad} onChange={handleModalidad} required ref={modalidadRef}>
-                                <option value="">Modalidad</option>
+                                <option value="">Seleccione una Modalidad</option>
                                 {modalidades.map((modalid) => (
                                     <option key={modalid} value={modalid}>
                                         {modalid}
                                     </option>
                                 ))}
                             </select>
+                        </div>
+
+                        <div className='inputs-flex-select'>
+                            <label>Categoria</label>
+                            <select required ref={categoria}>
+                                <option value="">Seleccione una categoría</option>
+                                <option value="ventas">Ventas</option>
+                                <option value="tecnologia">Tecnología</option>
+                                <option value="diseño">Diseño</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="administracion">Administración</option>
+                                <option value="finanzas">Finanzas</option>
+                                <option value="educacion">Educación</option>
+                                <option value="salud">Salud</option>
+                                <option value="servicios">Servicios</option>
+                                <option value="construccion">Construcción</option>
+                                <option value="manufactura">Manufactura</option>
+                                <option value="turismo">Turismo</option>
+                                <option value="alimentacion">Alimentación</option>
+                                <option value="medios">Medios de Comunicación</option>
+                                <option value="logistica">Logística</option>
+                                <option value="arte">Arte y Diseño</option>
+                                <option value="derecho">Derecho</option>
+                                <option value="recursos_humanos">Recursos Humanos</option>
+                                <option value="investigacion">Investigación</option>
+                                <option value="deportes">Deportes</option>
+                                <option value="transporte">Transporte</option>
+
+                            </select>
+
                         </div>
                     </div>
 

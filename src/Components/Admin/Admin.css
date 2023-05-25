@@ -7,7 +7,7 @@
 }
 
 .list-destinos span{
-    color: brown;
+    color: var(--text-color);
    
 }
 
@@ -48,7 +48,7 @@
 }
 
 .list-destinos{
-    background-color: var(--bg-contain-text);
+    background-color: var(--bg-color);
     width: 90%;
     height: 7rem;
     border-radius: 10px;
@@ -61,7 +61,7 @@
     margin-top: 10px;
     padding: 0px 20px;
     text-align: left;
-    color: var(--text-color);
+  
     font-size: 12px;
 }
 .list-destinos span{
@@ -75,7 +75,7 @@ align-items: center;
 align-content: center;
 justify-content: center;
 padding-top: 100px;
-background: linear-gradient(0deg,var(--gradient1) 0%, var(--gradient2) 100%);
+background-color: var(--bgv-color);
 padding: 100px 0px;
 }
 

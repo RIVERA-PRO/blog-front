@@ -47,7 +47,7 @@ export default function FormPublicacion() {
             "mail": mail,
         };
         console.log(data);
-        let url = 'http://localhost:8080/publicacion';
+        let url = 'https://dev2-lv2s.onrender.com/publicacion';
         let token = localStorage.getItem('token');
         let headers = { 'Authorization': `Bearer ${token}` };
         try {
@@ -97,10 +97,10 @@ export default function FormPublicacion() {
 
             <div className='crear-publicacion-contain'>
                 {userData ? (
-                    <div className='userInfo-publicacion'>
+                    <div className='userInfo-publicacion' onClick={() => handleModal()}>
                         <div className='img-input'>
                             <Anchor to={`/perfil/${userData.user_id}/${userData.name}`} > <img src={userData.photo} alt="User Avatar" /></Anchor>
-                            <input type="text" placeholder='Crear Publicacion' onClick={() => handleModal()} />
+                            <input type="text" placeholder='Crear Publicacion' />
                         </div>
 
                         <div className='publicacion-icon'>
@@ -129,7 +129,7 @@ export default function FormPublicacion() {
                 <div className='form-modal-content'>
 
                     {editMode === 'info' ? (
-                        <form onSubmit={handleSubmit} className='PublicacionFormulario'>
+                        <form onSubmit={handleSubmit} className='PublicacionFormulario' >
 
                             <div className='btnYcerrar'>
                                 <div className='trabajo-publicacion-btn' onClick={() => setEditMode('password')}><p>Ir a crear trabajo <FontAwesomeIcon icon={faSignOutAlt} /></p></div>
@@ -150,10 +150,16 @@ export default function FormPublicacion() {
                                     <label >Foto</label>
                                     <input type="url" placeholder='foto link' ref={cover_photo} />
                                 </div>
-                                <div className='inputs'>
-                                    <label>categoria</label>
-                                    <input type="text" placeholder='categoria ' required ref={categoria} />
+                                <div className='inputs-Select'>
+                                    <label>Categoría</label>
+                                    <select required ref={categoria}>
+                                        <option value="Anuncio">Anuncio</option>
+                                        <option value="Oferta">Oferta</option>
+                                        <option value="Búsqueda">Búsqueda</option>
+                                        <option value="Noticia">Noticia</option>
+                                    </select>
                                 </div>
+
 
                                 <button>Crear</button>
                             </div>

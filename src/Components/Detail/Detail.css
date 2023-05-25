@@ -15,7 +15,7 @@
     background-color: var(--bg-color);
     box-shadow: 1px 1px 1px 0px #1a1e2557;
     height: 100vh;
-    width: 40rem;
+    width: 45rem;
     margin-top: 20px;
     top: 0;
     display: flex;
@@ -33,7 +33,28 @@
 }
 
 
+.edit-delet-trabajo{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  
+   
+    
+}
+.edit-delet-trabajo input{
+    width: 100%;
+}
 
+.edit-delete-trabajos-btns {
+    width: 100%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    
+}
 
 @media (max-width: 700px){
 

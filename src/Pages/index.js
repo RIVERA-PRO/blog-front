@@ -1,8 +1,8 @@
 import IndexLayout from "../Layouts/IndexLayout";
 import MainLayout from "../Layouts/MainLayout";
 import PageDetail from "./PageDetail/PageDetail";
-import DestinosFormPage from "./DestinosFormPage/DestinosFormPage";
-import PublicarJobsPage from "./PublicarJobsPage/PublicarJobsPage";
+import AdminFormPage from "./AdminFormPage/AdminFormPage";
+
 import PagePerfil from "./PagePerfil/PagePerfil";
 import AllPublicaciones from "./PagePublicaciones/PagePublicaciones";
 import PageTrabajos from "./PageTrabajos/PageTrabajos";
@@ -22,13 +22,10 @@ export const router = createBrowserRouter([
                 element: <PageDetail />
             },
             {
-                path: "/new/destinos",
-                element: <DestinosFormPage />,
+                path: "/admin",
+                element: <AdminFormPage />,
             },
-            {
-                path: "/publicar",
-                element: <PublicarJobsPage />,
-            },
+
 
             {
                 path: "/perfil/:id/:name",

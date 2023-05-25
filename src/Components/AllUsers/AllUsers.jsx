@@ -16,7 +16,7 @@ export default function AllUsers() {
 
     const fetchUsers = () => {
         setTimeout(() => {
-            fetch('http://localhost:8080/users')
+            fetch('https://dev2-lv2s.onrender.com/users')
                 .then(response => response.json())
                 .then(data => {
                     // Randomly select 3 users

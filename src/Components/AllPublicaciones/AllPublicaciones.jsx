@@ -30,7 +30,7 @@ export default function AllPublicaciones({ reloadCount }) {
 
     const fetchPublicaciones = () => {
         setTimeout(() => {
-            fetch('http://localhost:8080/publicacion', headers)
+            fetch('https://dev2-lv2s.onrender.com/publicacion', headers)
                 .then(response => response.json())
                 .then(data => {
                     // Ordenar las publicaciones por fecha de creación (de la más reciente a la más antigua)
@@ -56,7 +56,7 @@ export default function AllPublicaciones({ reloadCount }) {
 
     const fetchComentarios = () => {
         setTimeout(() => {
-            fetch(`http://localhost:8080/comments`, headers)
+            fetch(`https://dev2-lv2s.onrender.com/comments`, headers)
                 .then(response => response.json())
                 .then(data => {
                     setComentarios(data.comments)
@@ -138,7 +138,7 @@ export default function AllPublicaciones({ reloadCount }) {
             text: comentarioText
         };
 
-        const url = `http://localhost:8080/comments?id=${params.id}`;
+        const url = `https://dev2-lv2s.onrender.com/comments?id=${params.id}`;
 
         fetch(url, {
             method: 'POST',
@@ -218,59 +218,47 @@ export default function AllPublicaciones({ reloadCount }) {
 
     /*eliminar----*/
     const handleEliminarComentario = (comentarioId) => {
-        setModal(false);
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: 'El comentario será eliminado permanentemente',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Eliminar',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const url = `http://localhost:8080/comments/${comentarioId}`;
+        const url = `https://dev2-lv2s.onrender.com/comments/${comentarioId}`;
 
-                fetch(url, {
-                    method: 'DELETE',
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                })
-                    .then(response => {
-                        if (response.ok) {
-                            // Elimina el comentario del estado 'comentarios'
-                            const updatedComentarios = comentarios.filter(comentario => comentario._id !== comentarioId);
-                            setComentarios(updatedComentarios);
-                            let dataAlert = {
-                                icon: "success",
-                                title: "Comentario eliminado",
-                                type: "toast"
-                            };
-                            dispatch(open(dataAlert));
-                        } else {
-                            console.error('Error al eliminar el comentario:', response.statusText);
-                            Swal.fire({
-                                title: '¡Error!',
-                                text: 'Ha ocurrido un error al eliminar el comentario',
-                                icon: 'error',
-                                confirmButtonText: 'Aceptar'
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error al eliminar el comentario:', error);
-                        Swal.fire({
-                            title: '¡Error!',
-                            text: 'Ha ocurrido un error al eliminar el comentario',
-                            icon: 'error',
-                            confirmButtonText: 'Aceptar'
-                        });
-                    });
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
             }
-        });
+        })
+            .then(response => {
+                if (response.ok) {
+                    // Elimina el comentario del estado 'comentarios'
+                    const updatedComentarios = comentarios.filter(comentario => comentario._id !== comentarioId);
+                    setComentarios(updatedComentarios);
+                    let dataAlert = {
+                        icon: "success",
+                        title: "Comentario eliminado",
+                        type: "toast"
+                    };
+                    dispatch(open(dataAlert));
+                    handleModal(!modal)
+                } else {
+                    console.error('Error al eliminar el comentario:', response.statusText);
+                    Swal.fire({
+                        title: '¡Error!',
+                        text: 'Ha ocurrido un error al eliminar el comentario',
+                        icon: 'error',
+                        confirmButtonText: 'Aceptar'
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error al eliminar el comentario:', error);
+                Swal.fire({
+                    title: '¡Error!',
+                    text: 'Ha ocurrido un error al eliminar el comentario',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                });
+            });
     };
+
 
     const [userData, setUserData] = useState(null);
 
@@ -299,6 +287,7 @@ export default function AllPublicaciones({ reloadCount }) {
     const [publicacion, setPublicacion] = useState([]);
     const [editingPublicacion, setEditingPublicacin] = useState(null);
     const [newTitle, setNewTitle] = useState('');
+    const [newCategoria, setNewCategoria] = useState('');
 
     const [newDescription, setNewDescription] = useState('');
 
@@ -318,7 +307,9 @@ export default function AllPublicaciones({ reloadCount }) {
     const handleEditDescription = (event) => {
         setNewDescription(event.target.value);
     };
-
+    const handleEditCategoria = (event) => {
+        setNewCategoria(event.target.value);
+    };
 
 
 
@@ -326,18 +317,18 @@ export default function AllPublicaciones({ reloadCount }) {
 
     const handleSaveTitle = (id) => {
 
-        if (newTitle.trim() === '' || newDescription.trim() === '' || newCover_photo.trim() === '') {
-            let dataAlert = {
-                icon: "error",
-                title: "Los campos no pueden estar vacíos",
-                type: "toast"
-            };
-            dispatch(open(dataAlert));
-            return;
-        }
+        // if (newTitle.trim() === '' || newDescription.trim() === '' || newCover_photo.trim() === '') {
+        //     let dataAlert = {
+        //         icon: "error",
+        //         title: "Los campos no pueden estar vacíos",
+        //         type: "toast"
+        //     };
+        //     dispatch(open(dataAlert));
+        //     return;
+        // }
 
 
-        fetch(`http://localhost:8080/publicacion/${id}`, {
+        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -347,6 +338,7 @@ export default function AllPublicaciones({ reloadCount }) {
                 title: newTitle,
                 description: newDescription,
                 cover_photo: newCover_photo,
+                categoria: newCategoria
             })
         })
             .then(response => response.json())
@@ -383,7 +375,7 @@ export default function AllPublicaciones({ reloadCount }) {
 
         let token = localStorage.getItem('token')
         let headers = { headers: { 'Authorization': `Bearer ${token}` } }
-        fetch(`http://localhost:8080/publicacion/${id}`, {
+        fetch(`https://dev2-lv2s.onrender.com/publicacion/${id}`, {
             method: 'DELETE',
             headers: headers.headers,
         })
@@ -452,8 +444,16 @@ export default function AllPublicaciones({ reloadCount }) {
                                         {editingPublicacion === publicacion?._id ? (
                                             <div className='form-edit-public'>
                                                 <input type="text" required value={newTitle} placeholder="Titulo" onChange={handleEditTitle} />
-                                                <input type="text" required value={newCover_photo} placeholder="Foto Link" onChange={handleEditCover_photo} />
-                                                <input type="text" required value={newDescription} placeholder="Descripcion" onChange={handleEditDescription} />
+                                                <input type="url" required value={newCover_photo} placeholder="Foto Link" onChange={handleEditCover_photo} />
+                                                <input type="text" required value={newDescription} placeholder="Texto" onChange={handleEditDescription} />
+                                                <select required value={newCategoria} onChange={handleEditCategoria}>
+                                                    <option value="">Categoría</option>
+                                                    <option value="Anuncio">Anuncio</option>
+                                                    <option value="Oferta">Oferta</option>
+                                                    <option value="Búsqueda">Búsqueda</option>
+                                                    <option value="Noticia">Noticia</option>
+                                                </select>
+
                                                 <div className='cancel-save'>
                                                     <button className="save" onClick={() => handleSaveTitle(publicacion?._id)}>
                                                         <FontAwesomeIcon icon={faPaperPlane} />
@@ -503,6 +503,16 @@ export default function AllPublicaciones({ reloadCount }) {
                                     <p className='canti-com-p'>  {publicacion?.comentarios?.length} comentarios</p>
 
                                 </div>
+
+                                <div className='comentar'>
+                                    <img src={userData?.photo} alt="" />
+
+                                    <input type="text" placeholder='comentar...' onClick={() => handleModal(publicacion)} />
+
+
+
+                                </div>
+
 
 
 

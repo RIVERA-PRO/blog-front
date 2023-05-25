@@ -17,12 +17,16 @@
 .inputs-flex {
     display: flex;
     gap: 2rem;
-    text-align: left;
+    
+    align-items: center;
+    justify-content: center;
 }
 
-
+.inputs-flex-select select{
+    width: 100%;
+}
 .contain-inputs select{
-    width: 9rem;
+    width: 14rem;
     background-color: var( --inputs)!important;
     border-radius: 20px;
     border: none;
@@ -48,6 +52,7 @@
     }
     .inputs-flex-select{
        flex-direction: column;
+       width: 100%;
     }
     .contain-inputs select{
         width: 100%;
@@ -55,3 +60,18 @@
     
 
 }
+
+
+.PublicacionFormulario::-webkit-scrollbar{
+    width: 7px;
+    height: 7px;
+    cursor: pointer;
+      background-color: var(--header);
+ }
+ 
+.PublicacionFormulario::-webkit-scrollbar-thumb{
+    background: linear-gradient(0deg,var( --celeste) 0%, var( --modal) 50%)!important;
+     width: 10px;
+     border-radius:20px ;
+     cursor: pointer;
+ }

@@ -15,7 +15,7 @@ export default function TrabajosHome() {
     let headers = { headers: { Authorization: `Bearer ${token}` } };
     useEffect(() => {
         setTimeout(() => {
-            fetch("http://localhost:8080/trabajos", headers)
+            fetch("https://dev2-lv2s.onrender.com/trabajos", headers)
 
                 .then((response) => response.json())
                 .then((data) => {

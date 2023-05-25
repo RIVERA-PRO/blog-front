@@ -13,7 +13,7 @@ export default function InputSearchs() {
     const [noResults, setNoResults] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:8080/trabajos")
+        fetch("https://dev2-lv2s.onrender.com/trabajos")
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.trabajos);
@@ -29,7 +29,7 @@ export default function InputSearchs() {
                 }, 3000);
             });
 
-        fetch("http://localhost:8080/users")
+        fetch("https://dev2-lv2s.onrender.com/users")
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.users);
@@ -43,7 +43,7 @@ export default function InputSearchs() {
                 }, 3000);
             });
 
-        fetch("http://localhost:8080/publicacion")
+        fetch("https://dev2-lv2s.onrender.com/publicacion")
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.publicaciones);
@@ -119,7 +119,7 @@ export default function InputSearchs() {
                             <hr />
                         </div>
                     ))}
-                    {noResults && <p>No se encontraron resultados.</p>}
+                    {noResults && <p className="results-no-found-2">No se encontraron resultados.</p>}
                 </div>
             )}
         </div>

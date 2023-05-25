@@ -28,6 +28,8 @@
 .form-register h4 {
     text-align: center;
     font-size: 17px;
+    color: var(--bg-color)!important;
+
 }
 
 .enviar input {
@@ -81,3 +83,6 @@
     height: 42px;
 }
 
+.form-register-contain img{
+    width: 200px;
+}

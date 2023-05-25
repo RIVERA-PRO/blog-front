@@ -29,7 +29,7 @@ export default function AllTrabajos() {
     let headers = { headers: { Authorization: `Bearer ${token}` } };
 
     useEffect(() => {
-        fetch("http://localhost:8080/trabajos", headers)
+        fetch("https://dev2-lv2s.onrender.com/trabajos", headers)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.trabajos);
@@ -52,7 +52,7 @@ export default function AllTrabajos() {
 
 
     useEffect(() => {
-        fetch("http://localhost:8080/trabajos", headers)
+        fetch("https://dev2-lv2s.onrender.com/trabajos", headers)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.trabajos);
@@ -72,7 +72,7 @@ export default function AllTrabajos() {
     }, [salario]);
 
     useEffect(() => {
-        const url = `http://localhost:8080/trabajos?ubicacion=${ubicacion}`;
+        const url = `https://dev2-lv2s.onrender.com/trabajos?ubicacion=${ubicacion}`;
         fetch(url, headers)
             .then((response) => response.json())
             .then((data) => {
@@ -295,7 +295,7 @@ export default function AllTrabajos() {
                                                     {trabajo.user_id === userId ? (
                                                         <Anchor
                                                             className="btn-detail"
-                                                            to={`/edit/${trabajo?._id}`}
+                                                            to={`/details/${trabajo?._id}`}
                                                         >
                                                             Edit
                                                         </Anchor>

@@ -1,10 +1,8 @@
 .page-container {
     display: flex;
-    background: linear-gradient(0deg,var(--gradient2) 0%, var(--gradient1) 100%);
+    background-color: var(--bg-color);
     transition: all .40s ease;
     height: 100%;
-
-
   }
   
   .menu-container {
